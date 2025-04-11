@@ -1,0 +1,20 @@
+react-firebase-app/
+├── public/
+│   └── vite.svg
+├── src/
+│   ├── assets/
+│   ├── components/
+│   │   └── ExampleComponent.jsx
+│   ├── pages/
+│   │   └── Home.jsx
+│   ├── App.jsx
+│   ├── main.jsx
+│   ├── firebase.js      ← configuração Firebase
+│   └── index.css        ← inclui o Tailwind
+├── .eslintrc.json       ← configuração do ESLint
+├── .prettierrc          ← configuração do Prettier
+├── tailwind.config.js   ← configuração do Tailwind
+├── postcss.config.js
+├── index.html
+├── package.json
+└── vite.config.js

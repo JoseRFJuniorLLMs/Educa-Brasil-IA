@@ -1,20 +1,23 @@
 react-firebase-app/
 ├── public/
-│   └── vite.svg               ← Arquivo de imagem pública (não alterado)
+│   └── vite.svg
 ├── src/
-│   ├── assets/                ← Recursos como imagens, fontes, etc.
-│   ├── components/            ← Componentes React
-│   │   └── ExampleComponent.jsx
-│   ├── pages/                 ← Páginas da aplicação
+│   ├── assets/                  ← Recursos como imagens, fontes, etc.
+│   ├── components/              ← Componentes React
+│   │   └── LoginGoogle.js       ← Componente de login com Google
+│   ├── pages/                   ← Páginas da aplicação
 │   │   └── Home.jsx
-│   ├── App.jsx                ← Componente principal da aplicação
-│   ├── main.jsx               ← Ponto de entrada da aplicação
-│   ├── firebase.js            ← Configuração do Firebase
-│   └── index.css              ← Arquivo CSS (incluindo o Tailwind)
-├── .eslintrc.json             ← Configuração do ESLint
-├── .prettierrc                ← Configuração do Prettier
-├── tailwind.config.js         ← Configuração do Tailwind CSS
-├── postcss.config.js          ← Configuração do PostCSS
-├── index.html                 ← Arquivo HTML de entrada
-├── package.json               ← Dependências e scripts do projeto
-└── vite.config.js             ← Configuração do Vite
+│   ├── firebase/                ← Configuração Firebase
+│   │   └── firebase-config.js   ← Arquivo com configuração do Firebase
+│   ├── routes/                  ← Arquivos para rotas protegidas
+│   │   └── ProtectedRoute.js    ← Rota protegida
+│   ├── App.jsx                  ← Componente principal da aplicação
+│   ├── main.jsx                 ← Ponto de entrada da aplicação
+│   ├── index.css                ← Arquivo CSS (incluindo o Tailwind)
+├── .eslintrc.json               ← Configuração do ESLint
+├── .prettierrc                  ← Configuração do Prettier
+├── tailwind.config.js           ← Configuração do Tailwind CSS
+├── postcss.config.js            ← Configuração do PostCSS
+├── index.html                   ← Arquivo HTML de entrada
+├── package.json                 ← Dependências e scripts do projeto
+└── vite.config.js               ← Configuração do Vite

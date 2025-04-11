@@ -1,39 +1,42 @@
-// src/pages/Login.jsx
 import React, { useState } from 'react';
-import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { auth } from '../firebase';
-import { useNavigate } from 'react-router-dom';
+import { auth } from './firebase-config'; // Importando o Firebase Auth
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+  const [error, setError] = useState('');
 
-  const loginEmail = async () => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate('/');
-    } catch (err) {
-      alert(err.message);
-    }
-  };
-
-  const loginGoogle = async () => {
-    try {
-      const provider = new GoogleAuthProvider();
-      await signInWithPopup(auth, provider);
-      navigate('/');
-    } catch (err) {
-      alert(err.message);
+      alert("Login bem-sucedido!");
+      // Redirecionar ou atualizar o estado do usuário aqui
+    } catch (error) {
+      setError('Falha no login. Verifique suas credenciais.');
     }
   };
 
   return (
-    <div className='flex flex-col items-center justify-center h-screen gap-4'>
-      <input className='border p-2' placeholder='Email' value={email} onChange={e => setEmail(e.target.value)} />
-      <input className='border p-2' placeholder='Password' type='password' value={password} onChange={e => setPassword(e.target.value)} />
-      <button className='bg-blue-600 text-white px-4 py-2' onClick={loginEmail}>Login Email</button>
-      <button className='bg-red-600 text-white px-4 py-2' onClick={loginGoogle}>Login Google</button>
+    <div>
+      <h2>Login</h2>
+      <form onSubmit={handleLogin}>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Senha"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit">Entrar</button>
+      </form>
+      {error && <p>{error}</p>}
     </div>
   );
 };

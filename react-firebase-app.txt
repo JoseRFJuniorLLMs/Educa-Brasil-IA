@@ -1,20 +1,20 @@
 react-firebase-app/
 ├── public/
-│   └── vite.svg
+│   └── vite.svg               ← Arquivo de imagem pública (não alterado)
 ├── src/
-│   ├── assets/
-│   ├── components/
+│   ├── assets/                ← Recursos como imagens, fontes, etc.
+│   ├── components/            ← Componentes React
 │   │   └── ExampleComponent.jsx
-│   ├── pages/
+│   ├── pages/                 ← Páginas da aplicação
 │   │   └── Home.jsx
-│   ├── App.jsx
-│   ├── main.jsx
-│   ├── firebase.js      ← configuração Firebase
-│   └── index.css        ← inclui o Tailwind
-├── .eslintrc.json       ← configuração do ESLint
-├── .prettierrc          ← configuração do Prettier
-├── tailwind.config.js   ← configuração do Tailwind
-├── postcss.config.js
-├── index.html
-├── package.json
-└── vite.config.js
+│   ├── App.jsx                ← Componente principal da aplicação
+│   ├── main.jsx               ← Ponto de entrada da aplicação
+│   ├── firebase.js            ← Configuração do Firebase
+│   └── index.css              ← Arquivo CSS (incluindo o Tailwind)
+├── .eslintrc.json             ← Configuração do ESLint
+├── .prettierrc                ← Configuração do Prettier
+├── tailwind.config.js         ← Configuração do Tailwind CSS
+├── postcss.config.js          ← Configuração do PostCSS
+├── index.html                 ← Arquivo HTML de entrada
+├── package.json               ← Dependências e scripts do projeto
+└── vite.config.js             ← Configuração do Vite

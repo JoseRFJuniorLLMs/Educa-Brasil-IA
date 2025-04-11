@@ -1,4 +1,4 @@
-// 📁 src/pages/Home.jsx (agora com CRUD Firestore)
+// src/pages/Home.jsx
 import React, { useEffect, useState } from 'react';
 import { db, auth } from '../firebase';
 import { collection, addDoc, getDocs, deleteDoc, doc } from 'firebase/firestore';

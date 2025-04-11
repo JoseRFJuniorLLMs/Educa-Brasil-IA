@@ -1,4 +1,4 @@
-// 📁 src/pages/Login.jsx
+// src/pages/Login.jsx
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { auth } from '../firebase';

@@ -28,6 +28,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  flex-direction: column;
 }
 
 h1 {
@@ -52,6 +53,62 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Menu fixed at the top */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f9f9f9; /* Lighter background for the menu */
+  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Keep the menu above other content */
+}
+
+nav .max-w-6xl {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+nav .flex {
+  display: flex;
+}
+
+nav a {
+  padding: 10px 15px;
+  font-weight: 600;
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+nav a:hover {
+  color: #646cff;
+}
+
+nav .flex a {
+  padding: 10px 15px;
+  font-weight: 600;
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+nav .flex a:hover {
+  color: #646cff;
+}
+
+main {
+  margin-top: 80px; /* Add space for the fixed menu */
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
 }
 
 @media (prefers-color-scheme: light) {

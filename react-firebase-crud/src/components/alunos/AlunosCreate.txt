@@ -1,0 +1,258 @@
+import React, { useState } from 'react';
+
+const AlunoForm = () => {
+  const [aluno, setAluno] = useState({
+    nomeCompleto: '',
+    nomeSocial: '',
+    dtNascimento: '',
+    sexo: null,
+    cpf: '',
+    certidaoNascimento: {
+      tipo: null,
+      numero: '',
+      livro: '',
+      folha: '',
+      dataEmissao: '',
+      cartorioUfId: '',
+      cartorioUfSigla: '',
+      cartorioCidadeId: '',
+      cartorioCidadeNome: '',
+    },
+    rg: {
+      numero: '',
+      complemento: '',
+      orgaoEmissor: '',
+      ufId: '',
+      ufSigla: '',
+      dataEmissao: '',
+    },
+    documentosAdicionais: {
+      nis: '',
+      inepId: '',
+      susCartao: '',
+      tituloEleitor: {
+        numero: '',
+        zona: '',
+        secao: '',
+      },
+      cnh: '',
+      passaporte: '',
+    },
+    racaCorId: '',
+    racaCorNome: '',
+    nacionalidadePaisId: '',
+    nacionalidadePaisNome: '',
+    naturalidadeCidadeId: '',
+    naturalidadeCidadeNome: '',
+    naturalidadeUfSigla: '',
+    endereco: {
+      logradouro: '',
+      numero: '',
+      complemento: '',
+      bairroId: '',
+      bairroNome: '',
+      cidadeId: '',
+      cidadeNome: '',
+      ufId: '',
+      ufSigla: '',
+      cep: '',
+      referencia: '',
+      latitude: null,
+      longitude: null,
+      zona: null,
+    },
+    contatos: [
+      { tipo: 'telefone', valor: '', obs: '' },
+      { tipo: 'telefone', valor: '', obs: '' },
+      { tipo: 'email', valor: '', obs: '' },
+    ],
+    filiacao: {
+      maeId: '',
+      maeNome: '',
+      paiId: '',
+      paiNome: '',
+    },
+    responsaveisResumo: [
+      {
+        responsavelId: '',
+        nome: '',
+        tipoRelacaoId: 5,
+        tipoRelacaoNome: 'Responsável Legal',
+        autorizadoBuscar: true,
+      },
+    ],
+    statusGeral: 'Ativo',
+    matriculaAtual: {
+      id: '',
+      estabelecimentoId: '',
+      estabelecimentoNome: '',
+      turmaId: '',
+      turmaNome: '',
+      serieId: '',
+      serieNome: '',
+      turnoId: '',
+      turnoNome: '',
+      situacaoMatriculaId: '',
+      situacaoMatriculaNome: '',
+      dataEntrada: '',
+      numeroChamada: null,
+    },
+    saude: {
+      pcd: false,
+      necessidadesEspeciais: [],
+      alergias: [],
+      usaMedicacaoContinua: false,
+      medicacaoDescricao: '',
+      tipoSanguineo: '',
+      acompanhamentoMedico: '',
+    },
+    transporte: {
+      necessario: false,
+      tipoVeiculoId: '',
+      distancia: null,
+    },
+    fotoUrl: null,
+    observacoesGerais: '',
+    dataCadastroSistema: '',
+    ultimaAtualizacao: '',
+    ativo: true,
+    bolsaFamilia: false,
+    gestante: false,
+    dataProvavelParto: null,
+    acolhimento: '',
+    programasSociais: false,
+    aee: {
+      complementar: false,
+      autonomia: false,
+    },
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setAluno((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  return (
+    <div>
+      <h2>Cadastro de Aluno</h2>
+      <form>
+        <label>
+          Nome Completo:
+          <input
+            type="text"
+            name="nomeCompleto"
+            value={aluno.nomeCompleto}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Nome Social:
+          <input
+            type="text"
+            name="nomeSocial"
+            value={aluno.nomeSocial}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Data de Nascimento:
+          <input
+            type="date"
+            name="dtNascimento"
+            value={aluno.dtNascimento}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Sexo:
+          <select
+            name="sexo"
+            value={aluno.sexo}
+            onChange={handleChange}
+          >
+            <option value="">Selecione</option>
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
+            <option value="O">Outro</option>
+          </select>
+        </label>
+        <label>
+          CPF:
+          <input
+            type="text"
+            name="cpf"
+            value={aluno.cpf}
+            onChange={handleChange}
+          />
+        </label>
+
+        {/* Exemplo para Certidão de Nascimento */}
+        <label>
+          Tipo de Certidão:
+          <input
+            type="text"
+            name="certidaoNascimento.tipo"
+            value={aluno.certidaoNascimento.tipo}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Número da Certidão:
+          <input
+            type="text"
+            name="certidaoNascimento.numero"
+            value={aluno.certidaoNascimento.numero}
+            onChange={handleChange}
+          />
+        </label>
+
+        {/* Contatos */}
+        <div>
+          <h3>Contatos</h3>
+          {aluno.contatos.map((contato, index) => (
+            <div key={index}>
+              <label>
+                Tipo de Contato:
+                <input
+                  type="text"
+                  name={`contatos[${index}].tipo`}
+                  value={contato.tipo}
+                  onChange={handleChange}
+                />
+              </label>
+              <label>
+                Valor:
+                <input
+                  type="text"
+                  name={`contatos[${index}].valor`}
+                  value={contato.valor}
+                  onChange={handleChange}
+                />
+              </label>
+            </div>
+          ))}
+        </div>
+
+        {/* Dados de Saúde */}
+        <label>
+          Possui Necessidades Especiais:
+          <input
+            type="checkbox"
+            name="saude.pcd"
+            checked={aluno.saude.pcd}
+            onChange={handleChange}
+          />
+        </label>
+
+        {/* E assim por diante... */}
+
+        <button type="submit">Salvar</button>
+      </form>
+    </div>
+  );
+};
+
+export default AlunoForm;

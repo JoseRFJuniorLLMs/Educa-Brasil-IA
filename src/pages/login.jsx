@@ -39,20 +39,3 @@ const Login = () => {
 };
 
 export default Login;
-
-
-
-
-
-
-// 📁 firebase.json para Deploy (na raiz do projeto)
-{
-  "hosting": {
-    "public": "dist",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-    "rewrites": [
-      { "source": "**", "destination": "/index.html" }
-    ]
-  }
-}
-

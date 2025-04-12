@@ -4,6 +4,7 @@ import CreateItem from './components/CreateItem';
 import ReadItems from './components/ReadItems';
 import UpdateItem from './components/UpdateItem';
 import DeleteItem from './components/DeleteItem';
+import AlunoForm from './components/alunos/AlunosCreate'; 
 
 const App: React.FC = () => {
   return (
@@ -15,13 +16,14 @@ const App: React.FC = () => {
               <div className="flex space-x-7">
                 <div>
                   <Link to="/" className="flex items-center py-4 px-2">
-                    <span className="font-semibold text-gray-500 text-lg">CRUD App</span>
+                    <span className="font-semibold text-gray-500 text-lg">EBIA2025</span>
                   </Link>
                 </div>
               </div>
               <div className="flex items-center space-x-3">
                 <Link to="/" className="py-4 px-2 text-gray-500 hover:text-gray-900">Home</Link>
                 <Link to="/create" className="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300">Create Item</Link>
+                <Link to="/aluno" className="py-2 px-2 font-medium text-white bg-blue-500 rounded hover:bg-blue-400 transition duration-300">Cadastro Aluno</Link>
               </div>
             </div>
           </div>
@@ -33,6 +35,7 @@ const App: React.FC = () => {
             <Route path="/create" element={<CreateItem />} />
             <Route path="/update/:id" element={<UpdateItem id="" name="" description="" />} />
             <Route path="/delete/:id" element={<DeleteItem id="" />} />
+            <Route path="/aluno" element={<AlunoForm />} /> {/* Nova rota */}
           </Routes>
         </div>
       </div>

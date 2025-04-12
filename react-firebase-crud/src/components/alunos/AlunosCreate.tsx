@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const AlunoForm = () => {
   const [aluno, setAluno] = useState({
     nomeCompleto: '',
     nomeSocial: '',
     dtNascimento: '',
-    sexo: null,
+    sexo: '',
     cpf: '',
     certidaoNascimento: {
-      tipo: null,
+      tipo: '',
       numero: '',
       livro: '',
       folha: '',
@@ -57,9 +57,9 @@ const AlunoForm = () => {
       ufSigla: '',
       cep: '',
       referencia: '',
-      latitude: null,
-      longitude: null,
-      zona: null,
+      latitude: '',
+      longitude: '',
+      zona: '',
     },
     contatos: [
       { tipo: 'telefone', valor: '', obs: '' },
@@ -95,7 +95,7 @@ const AlunoForm = () => {
       situacaoMatriculaId: '',
       situacaoMatriculaNome: '',
       dataEntrada: '',
-      numeroChamada: null,
+      numeroChamada: '',
     },
     saude: {
       pcd: false,
@@ -109,16 +109,16 @@ const AlunoForm = () => {
     transporte: {
       necessario: false,
       tipoVeiculoId: '',
-      distancia: null,
+      distancia: '',
     },
-    fotoUrl: null,
+    fotoUrl: '',
     observacoesGerais: '',
     dataCadastroSistema: '',
     ultimaAtualizacao: '',
     ativo: true,
     bolsaFamilia: false,
     gestante: false,
-    dataProvavelParto: null,
+    dataProvavelParto: '',
     acolhimento: '',
     programasSociais: false,
     aee: {
@@ -127,14 +127,32 @@ const AlunoForm = () => {
     },
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setAluno((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { name, value, type } = e.target;
+  
+    const finalValue =
+      type === 'checkbox'
+        ? (e.target as HTMLInputElement).checked
+        : value;
+  
+    const keys = name.split('.');
+    if (keys.length === 1) {
+      setAluno((prev) => ({ ...prev, [name]: finalValue }));
+    } else {
+      setAluno((prev) => {
+        const newAluno = { ...prev };
+        let obj: any = newAluno;
+        for (let i = 0; i < keys.length - 1; i++) {
+          obj = obj[keys[i]];
+        }
+        obj[keys[keys.length - 1]] = finalValue;
+        return newAluno;
+      });
+    }
   };
-
+  
   return (
     <div>
       <h2>Cadastro de Aluno</h2>
@@ -168,11 +186,7 @@ const AlunoForm = () => {
         </label>
         <label>
           Sexo:
-          <select
-            name="sexo"
-            value={aluno.sexo}
-            onChange={handleChange}
-          >
+          <select name="sexo" value={aluno.sexo} onChange={handleChange}>
             <option value="">Selecione</option>
             <option value="M">Masculino</option>
             <option value="F">Feminino</option>
@@ -189,7 +203,7 @@ const AlunoForm = () => {
           />
         </label>
 
-        {/* Exemplo para Certidão de Nascimento */}
+        {/* Certidão de Nascimento */}
         <label>
           Tipo de Certidão:
           <input
@@ -218,7 +232,7 @@ const AlunoForm = () => {
                 Tipo de Contato:
                 <input
                   type="text"
-                  name={`contatos[${index}].tipo`}
+                  name={`contatos.${index}.tipo`}
                   value={contato.tipo}
                   onChange={handleChange}
                 />
@@ -227,7 +241,7 @@ const AlunoForm = () => {
                 Valor:
                 <input
                   type="text"
-                  name={`contatos[${index}].valor`}
+                  name={`contatos.${index}.valor`}
                   value={contato.valor}
                   onChange={handleChange}
                 />
@@ -236,7 +250,7 @@ const AlunoForm = () => {
           ))}
         </div>
 
-        {/* Dados de Saúde */}
+        {/* Saúde */}
         <label>
           Possui Necessidades Especiais:
           <input
@@ -246,8 +260,6 @@ const AlunoForm = () => {
             onChange={handleChange}
           />
         </label>
-
-        {/* E assim por diante... */}
 
         <button type="submit">Salvar</button>
       </form>
